@@ -1,0 +1,16 @@
+<svg width="940" height="1200" viewBox="0 0 940 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="940" height="1200" fill="#D5C6A4"/>
+  <ellipse cx="470" cy="600" rx="280" ry="280" stroke="#8A734D" stroke-width="24"/>
+  <path d="M180 930C220 860 270 790 320 720C355 670 410 585 470 490L560 520L500 650C465 730 410 835 340 970L180 930Z" fill="#69523D"/>
+  <path d="M250 760C310 675 375 575 445 455C485 386 535 316 605 250C665 262 718 292 760 338C675 418 612 500 570 588C540 653 510 723 484 807L250 760Z" fill="#C8D1D3"/>
+  <path d="M432 470C490 390 548 320 618 256" stroke="#F2F4F5" stroke-width="16" stroke-linecap="round"/>
+  <path d="M352 645C375 594 405 542 442 486L523 503C495 565 473 615 455 654L352 645Z" fill="#7A6152"/>
+  <path d="M211 879C251 820 293 754 334 685L470 718L420 824L211 879Z" fill="#4C3A2B" fill-opacity="0.18"/>
+  <path d="M180 930C220 860 270 790 320 720C355 670 410 585 470 490L560 520L500 650C465 730 410 835 340 970L180 930Z" stroke="#4E3D2A" stroke-width="10"/>
+  <path d="M250 760C310 675 375 575 445 455C485 386 535 316 605 250C665 262 718 292 760 338C675 418 612 500 570 588C540 653 510 723 484 807L250 760Z" stroke="#576266" stroke-width="10"/>
+  <circle cx="597" cy="329" r="14" fill="#B89853"/>
+  <circle cx="351" cy="845" r="10" fill="#231A14"/>
+  <text x="470" y="1088" text-anchor="middle" fill="#614E37" font-family="Georgia, serif" font-size="36" letter-spacing="6">
+    SHAVKHANI
+  </text>
+</svg>
