@@ -99,7 +99,12 @@ export const products: Product[] = [
         value: { ka: '58-60 HRC', en: '58-60 HRC' },
       },
     ],
-    images: ['/images/hunting-knife-1.jpg', '/images/hunting-knife-2.jpg', '/images/hunting-knife-3.jpg'],
+    images: [
+      '/images/hunting-knife-oak.jfif',
+      '/images/hunting-knife-1.jpg',
+      '/images/hunting-knife-2.jpg',
+      '/images/hunting-knife-3.jpg',
+    ],
     featured: true,
   },
   {

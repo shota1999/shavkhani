@@ -10,13 +10,14 @@ export function getLocalizedText(text: LocalizedText, language: Language): strin
 }
 
 export function formatPrice(price: number, language: Language, forceDecimals = false): string {
-  const locale = language === 'ka' ? 'ka-GE' : 'en-US'
-  const minimumFractionDigits = forceDecimals ? 2 : Number.isInteger(price) ? 0 : 2
+  const fractionDigits = forceDecimals ? 2 : Number.isInteger(price) ? 0 : 2
+  const decimalSeparator = language === 'ka' ? ',' : '.'
+  const parts = price.toFixed(fractionDigits).split('.')
+  const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  const fractionalPart = parts[1]
+  const formattedNumber = fractionalPart ? `${integerPart}${decimalSeparator}${fractionalPart}` : integerPart
 
-  return `${new Intl.NumberFormat(locale, {
-    minimumFractionDigits,
-    maximumFractionDigits: 2,
-  }).format(price)} GEL`
+  return `${formattedNumber} GEL`
 }
 
 export const translations = {
@@ -36,7 +37,7 @@ export const translations = {
       shoppingCart: 'საყიდლების კალათა',
     },
     hero: {
-      tagline: 'ადამიანის ხელით შექმნილი, ბუნებით გამოცდილი',
+      tagline: 'Forged by man Tested by nature',
       description:
         'ყოველი დანა, საფულე და ქარქაში ხელით მზადდება ტრადიციული ტექნიკითა და შერჩეული მასალებით. ნივთები მათთვის, ვინც აფასებს ხარისხს, გამძლეობასა და ნამდვილ ხელობას.',
       shopCollection: 'კოლექციის ნახვა',
@@ -119,7 +120,7 @@ export const translations = {
     },
     footer: {
       description:
-        'ადამიანის ხელით შექმნილი, ბუნებით გამოცდილი. თითოეული ნამუშევარი ჩვენს სახელოსნოში სიზუსტითა და ყურადღებით მზადდება.',
+        'თითოეული ნამუშევარი ჩვენს სახელოსნოში სიზუსტითა და ყურადღებით მზადდება.',
       shop: 'კატალოგი',
       company: 'ინფორმაცია',
       legal: 'პირობები',
@@ -129,7 +130,7 @@ export const translations = {
       privacy: 'კონფიდენციალურობა',
       terms: 'წესები',
       returns: 'დაბრუნება',
-      copyright: 'ადამიანის ხელით შექმნილი, ბუნებით გამოცდილი.',
+      copyright: 'Forged by man Tested by nature',
     },
     common: {
       home: 'მთავარი',
@@ -142,7 +143,7 @@ export const translations = {
       sheaths: 'ქარქაშები',
       sheathsDescription: 'თქვენს დანებზე მორგებული საიმედო ქარქაშები',
       productNotFound: 'პროდუქტი ვერ მოიძებნა | SHAVKHANI',
-      siteTitle: 'SHAVKHANI | ადამიანის ხელით შექმნილი, ბუნებით გამოცდილი',
+      siteTitle: 'SHAVKHANI | Forged by man Tested by nature',
       siteDescription:
         'ხელნაკეთი დანები, ტყავის საფულეები და ქარქაშები. თითოეული ნივთი იქმნება ტრადიციული ტექნიკითა და ხარისხიან მასალებით.',
     },
