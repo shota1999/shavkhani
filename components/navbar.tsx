@@ -2,14 +2,21 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, ShoppingBag, X } from 'lucide-react'
-import { useState } from 'react'
+import { Menu, ShoppingBag } from 'lucide-react'
 import { useCart } from '@/lib/cart-context'
 import { useLanguage } from '@/lib/language-context'
 import { Button } from '@/components/ui/button'
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { totalItems, setIsOpen } = useCart()
   const { language, setLanguage, copy } = useLanguage()
 
@@ -47,16 +54,86 @@ export function Navbar() {
         </div>
 
         <div className="flex lg:hidden">
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon"
-            className="text-foreground"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <Menu className="size-6" />
-            <span className="sr-only">{copy.navbar.openMenu}</span>
-          </Button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button type="button" variant="ghost" size="icon" className="text-foreground">
+                <Menu className="size-6" />
+                <span className="sr-only">{copy.navbar.openMenu}</span>
+              </Button>
+            </SheetTrigger>
+
+            <SheetContent
+              side="right"
+              className="w-[88%] max-w-sm border-l border-border bg-card p-0"
+            >
+              <SheetHeader className="border-b border-border px-5 py-4 text-left">
+                <div className="flex items-center gap-3 pr-10">
+                  <Image
+                    src="/images/logo.png"
+                    alt="SHAVKHANI"
+                    width={44}
+                    height={44}
+                    className="size-11"
+                  />
+                  <div>
+                    <SheetTitle className="text-base tracking-[0.18em] uppercase">
+                      Shavkhani
+                    </SheetTitle>
+                    <SheetDescription className="mt-1 text-xs uppercase tracking-[0.2em]">
+                      {copy.hero.tagline}
+                    </SheetDescription>
+                  </div>
+                </div>
+              </SheetHeader>
+
+              <div className="flex-1 overflow-y-auto px-5 py-5">
+                <div className="flex gap-2">
+                  <Button
+                    type="button"
+                    variant={language === 'ka' ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setLanguage('ka')}
+                  >
+                    ქართული
+                  </Button>
+                  <Button
+                    type="button"
+                    variant={language === 'en' ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setLanguage('en')}
+                  >
+                    English
+                  </Button>
+                </div>
+
+                <div className="mt-6 space-y-2">
+                  {navigation.map((item) => (
+                    <SheetClose asChild key={item.name}>
+                      <Link
+                        href={item.href}
+                        className="block rounded-xl border border-border px-4 py-3 text-base font-medium tracking-wide text-foreground uppercase transition-colors hover:bg-muted"
+                      >
+                        {item.name}
+                      </Link>
+                    </SheetClose>
+                  ))}
+                </div>
+              </div>
+
+              <div className="border-t border-border p-5">
+                <SheetClose asChild>
+                  <Button
+                    variant="outline"
+                    className="w-full justify-start gap-2"
+                    onClick={() => setIsOpen(true)}
+                  >
+                    <ShoppingBag className="size-5" />
+                    {copy.navbar.cart} {totalItems > 0 && `(${totalItems})`}
+                  </Button>
+                </SheetClose>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
 
         <div className="hidden lg:flex lg:gap-x-10">
@@ -108,95 +185,6 @@ export function Navbar() {
           </Button>
         </div>
       </nav>
-
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <button
-            type="button"
-            className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-            onClick={() => setMobileMenuOpen(false)}
-            aria-label={copy.navbar.closeMenu}
-          />
-          <div className="absolute right-0 top-0 flex h-full w-[88%] max-w-sm flex-col border-l border-border bg-card shadow-2xl">
-            <div className="flex items-center justify-between border-b border-border px-5 py-4">
-              <Link
-                href="/"
-                className="flex items-center gap-3"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <Image
-                  src="/images/logo.png"
-                  alt="SHAVKHANI"
-                  width={44}
-                  height={44}
-                  className="size-11"
-                />
-                <span className="text-base font-semibold tracking-[0.18em] text-foreground uppercase">
-                  Shavkhani
-                </span>
-              </Link>
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon"
-                className="text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <X className="size-6" />
-                <span className="sr-only">{copy.navbar.closeMenu}</span>
-              </Button>
-            </div>
-
-            <div className="flex-1 overflow-y-auto px-5 py-5">
-              <div className="flex gap-2">
-                <Button
-                  type="button"
-                  variant={language === 'ka' ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setLanguage('ka')}
-                >
-                  ქართული
-                </Button>
-                <Button
-                  type="button"
-                  variant={language === 'en' ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setLanguage('en')}
-                >
-                  English
-                </Button>
-              </div>
-
-              <div className="mt-6 space-y-2">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="block rounded-xl border border-border px-4 py-3 text-base font-medium tracking-wide text-foreground uppercase transition-colors hover:bg-muted"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="border-t border-border p-5">
-              <Button
-                variant="outline"
-                className="w-full justify-start gap-2"
-                onClick={() => {
-                  setMobileMenuOpen(false)
-                  setIsOpen(true)
-                }}
-              >
-                <ShoppingBag className="size-5" />
-                {copy.navbar.cart} {totalItems > 0 && `(${totalItems})`}
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
     </header>
   )
 }
