@@ -23,9 +23,9 @@ export function Hero() {
         <Image
           src="/images/logo.png"
           alt="SHAVKHANI"
-          width={180}
-          height={180}
-          className="mx-auto mb-8 size-36 sm:size-44"
+          width={720}
+          height={720}
+          className="mx-auto mb-8 size-[576px] sm:size-[672px]"
         />
         <h1 className="text-balance text-4xl font-bold tracking-[0.15em] text-foreground sm:text-5xl lg:text-6xl uppercase">
           Shavkhani

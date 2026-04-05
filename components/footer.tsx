@@ -26,7 +26,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="border-t border-border bg-card">
+    <footer id="contact" className="border-t border-border bg-card">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid gap-8 lg:grid-cols-4">
           <div className="lg:col-span-1">
@@ -34,9 +34,9 @@ export function Footer() {
               <Image
                 src="/images/logo.png"
                 alt="SHAVKHANI"
-                width={48}
-                height={48}
-                className="size-12"
+                width={56}
+                height={56}
+                className="size-14"
               />
               <span className="text-lg font-semibold tracking-[0.2em] text-foreground uppercase">
                 Shavkhani

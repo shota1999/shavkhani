@@ -13,12 +13,20 @@ export function Navbar() {
   const { totalItems, setIsOpen } = useCart()
   const { language, setLanguage, copy } = useLanguage()
 
-  const navigation = [
-    { name: copy.navbar.shop, href: '/#products' },
-    { name: copy.navbar.knives, href: '/#knives' },
-    { name: copy.navbar.wallets, href: '/#wallets' },
-    { name: copy.navbar.sheaths, href: '/#sheaths' },
-  ]
+  const navigation =
+    language === 'ka'
+      ? [
+          { name: 'მთავარი', href: '/' },
+          { name: 'ხელნაკეთი დანები', href: '/#knives' },
+          { name: 'ტყავის აქსესუარები', href: '/#wallets' },
+          { name: 'კონტაქტი', href: '#contact' },
+        ]
+      : [
+          { name: 'Home', href: '/' },
+          { name: 'Handmade Knives', href: '/#knives' },
+          { name: 'Leather Accessories', href: '/#wallets' },
+          { name: 'Contact', href: '#contact' },
+        ]
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -28,9 +36,9 @@ export function Navbar() {
             <Image
               src="/images/logo.png"
               alt="SHAVKHANI"
-              width={40}
-              height={40}
-              className="size-10"
+              width={48}
+              height={48}
+              className="size-12"
             />
             <span className="text-lg font-semibold tracking-[0.2em] text-foreground uppercase">
               Shavkhani
@@ -109,9 +117,9 @@ export function Navbar() {
                 <Image
                   src="/images/logo.png"
                   alt="SHAVKHANI"
-                  width={36}
-                  height={36}
-                  className="size-9"
+                  width={44}
+                  height={44}
+                  className="size-11"
                 />
                 <span className="text-lg font-semibold tracking-[0.2em] text-foreground uppercase">
                   Shavkhani
