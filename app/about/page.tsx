@@ -6,22 +6,6 @@ import { useLanguage } from '@/lib/language-context'
 export default function AboutPage() {
   const { language } = useLanguage()
 
-  const people =
-    language === 'ka'
-      ? [
-          'ქირა - საბა ბუაძე',
-          'სესხი - საბა ბუაძე',
-          'გაყიდვები - საბა ბუაძე',
-          'სახარჯი მასალები ყიდვა - საბა ბუაძე',
-          'ცემენტი ქვა ნახშირის მოტანა - საბა ბუაძე',
-          'ხელსაქმე - ლაშა რამიშვილი',
-        ]
-      : [
-          'Rent - Saba Buadze',
-          'Craft - Lasha Ramishvili',
-          'Loan - Saba Buadze',
-        ]
-
   return (
     <section className="relative min-h-[70vh] overflow-hidden">
       <Image
@@ -43,20 +27,9 @@ export default function AboutPage() {
           </h1>
           <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">
             {language === 'ka'
-              ? 'ქვემოთ მოცემულია ინფორმაცია, რომელიც გთხოვეთ ცალკე გვერდზე გამოგვეტანა.'
-              : 'Below is the information you asked to place on a separate page.'}
+              ? 'ჩვენს შესახებ გვერდი შეგიძლიათ გამოიყენოთ კომპანიის, სახელოსნოს ან ბრენდის ისტორიისა და ინფორმაციის გამოსატანად.'
+              : 'Use this page to present your company, workshop, or brand story and background.'}
           </p>
-        </div>
-
-        <div className="mt-10 grid gap-4 sm:mt-12">
-          {people.map((item) => (
-            <div
-              key={item}
-              className="rounded-2xl border border-border bg-card/70 px-5 py-4 text-lg font-medium text-foreground backdrop-blur-sm"
-            >
-              {item}
-            </div>
-          ))}
         </div>
       </div>
     </section>
