@@ -39,9 +39,9 @@ export function Footer() {
                 className="size-14"
               />
               <span
-                className="text-xl font-semibold leading-none tracking-[0.14em] text-foreground"
+                className="font-brand text-[24px] leading-none tracking-[0.06em] text-foreground"
               >
-                564VKH4N4 W4R
+                SHAVKHANI
               </span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
