@@ -2,14 +2,12 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShoppingBag, Menu, X } from 'lucide-react'
-import { useState } from 'react'
+import { ShoppingBag } from 'lucide-react'
 import { useCart } from '@/lib/cart-context'
 import { useLanguage } from '@/lib/language-context'
 import { Button } from '@/components/ui/button'
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { totalItems, setIsOpen } = useCart()
   const { language, setLanguage, copy } = useLanguage()
 
@@ -32,7 +30,7 @@ export function Navbar() {
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
+          <Link href="/" className="-m-1.5 flex items-center gap-3 p-1.5">
             <Image
               src="/images/logo.png"
               alt="SHAVKHANI"
@@ -46,23 +44,12 @@ export function Navbar() {
           </Link>
         </div>
 
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-foreground"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <span className="sr-only">{copy.navbar.openMenu}</span>
-            <Menu className="size-6" aria-hidden="true" />
-          </button>
-        </div>
-
         <div className="hidden lg:flex lg:gap-x-10">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium tracking-wide text-muted-foreground transition-colors hover:text-foreground uppercase"
+              className="text-sm font-medium tracking-wide text-muted-foreground uppercase transition-colors hover:text-foreground"
             >
               {item.name}
             </Link>
@@ -107,83 +94,49 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile menu */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
-          <div className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-background px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-border">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
-                <Image
-                  src="/images/logo.png"
-                  alt="SHAVKHANI"
-                  width={44}
-                  height={44}
-                  className="size-11"
-                />
-                <span className="text-lg font-semibold tracking-[0.2em] text-foreground uppercase">
-                  Shavkhani
-                </span>
-              </Link>
-              <button
-                type="button"
-                className="-m-2.5 rounded-md p-2.5 text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
+      <div className="border-t border-border lg:hidden">
+        <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
+          <div className="mb-3 flex items-center gap-2">
+            <Button
+              type="button"
+              variant={language === 'ka' ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setLanguage('ka')}
+            >
+              ქართული
+            </Button>
+            <Button
+              type="button"
+              variant={language === 'en' ? 'default' : 'outline'}
+              size="sm"
+              onClick={() => setLanguage('en')}
+            >
+              English
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              className="ml-auto gap-2"
+              onClick={() => setIsOpen(true)}
+            >
+              <ShoppingBag className="size-4" />
+              {copy.navbar.cart} {totalItems > 0 && `(${totalItems})`}
+            </Button>
+          </div>
+
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="shrink-0 rounded-full border border-border px-4 py-2 text-sm font-medium tracking-wide text-foreground uppercase transition-colors hover:bg-muted"
               >
-                <span className="sr-only">{copy.navbar.closeMenu}</span>
-                <X className="size-6" aria-hidden="true" />
-              </button>
-            </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-border">
-                <div className="space-y-2 py-6">
-                  <div className="flex gap-2 px-3 pb-4">
-                    <Button
-                      type="button"
-                      variant={language === 'ka' ? 'default' : 'outline'}
-                      size="sm"
-                      onClick={() => setLanguage('ka')}
-                    >
-                      ქართული
-                    </Button>
-                    <Button
-                      type="button"
-                      variant={language === 'en' ? 'default' : 'outline'}
-                      size="sm"
-                      onClick={() => setLanguage('en')}
-                    >
-                      English
-                    </Button>
-                  </div>
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium tracking-wide text-foreground hover:bg-muted uppercase"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-                <div className="py-6">
-                  <Button
-                    variant="outline"
-                    className="w-full justify-start gap-2"
-                    onClick={() => {
-                      setMobileMenuOpen(false)
-                      setIsOpen(true)
-                    }}
-                  >
-                    <ShoppingBag className="size-5" />
-                    {copy.navbar.cart} {totalItems > 0 && `(${totalItems})`}
-                  </Button>
-                </div>
-              </div>
-            </div>
+                {item.name}
+              </Link>
+            ))}
           </div>
         </div>
-      )}
+      </div>
     </header>
   )
 }
