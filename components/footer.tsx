@@ -14,7 +14,7 @@ export function Footer() {
       { name: copy.common.sheaths, href: '#sheaths' },
     ],
     company: [
-      { name: copy.footer.about, href: '#about' },
+      { name: copy.footer.about, href: '/about' },
       { name: copy.footer.contact, href: '#contact' },
       { name: copy.footer.shipping, href: '#shipping' },
     ],
