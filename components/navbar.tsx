@@ -6,15 +6,7 @@ import { Menu, ShoppingBag } from 'lucide-react'
 import { useCart } from '@/lib/cart-context'
 import { useLanguage } from '@/lib/language-context'
 import { Button } from '@/components/ui/button'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 
 export function Navbar() {
   const { totalItems, setIsOpen } = useCart()
@@ -62,75 +54,56 @@ export function Navbar() {
               </Button>
             </SheetTrigger>
 
-            <SheetContent
-              side="right"
-              className="w-[88%] max-w-sm border-l border-border bg-card p-0"
-            >
-              <SheetHeader className="border-b border-border px-5 py-4 text-left">
-                <div className="flex items-center gap-3 pr-10">
-                  <Image
-                    src="/images/logo.png"
-                    alt="SHAVKHANI"
-                    width={44}
-                    height={44}
-                    className="size-11"
-                  />
-                  <div>
-                    <SheetTitle className="text-base tracking-[0.18em] uppercase">
-                      Shavkhani
-                    </SheetTitle>
-                    <SheetDescription className="mt-1 text-xs uppercase tracking-[0.2em]">
-                      {copy.hero.tagline}
-                    </SheetDescription>
+            <SheetContent side="right" className="w-full max-w-[22rem] border-l border-border bg-card p-0">
+              <div className="flex h-full flex-col">
+                <div className="flex-1 overflow-y-auto px-5 pb-5 pt-14">
+                  <div className="grid grid-cols-2 gap-2">
+                    <Button
+                      type="button"
+                      variant={language === 'ka' ? 'default' : 'outline'}
+                      size="sm"
+                      className="h-11 rounded-xl border-border"
+                      onClick={() => setLanguage('ka')}
+                    >
+                      ქართული
+                    </Button>
+                    <Button
+                      type="button"
+                      variant={language === 'en' ? 'default' : 'outline'}
+                      size="sm"
+                      className="h-11 rounded-xl border-border"
+                      onClick={() => setLanguage('en')}
+                    >
+                      English
+                    </Button>
+                  </div>
+
+                  <div className="mt-8">
+                    {navigation.map((item) => (
+                      <SheetClose asChild key={item.name}>
+                        <Link
+                          href={item.href}
+                          className="block border-b border-border/70 py-4 text-[17px] font-medium tracking-[0.04em] text-foreground transition-colors hover:text-primary"
+                        >
+                          {item.name}
+                        </Link>
+                      </SheetClose>
+                    ))}
                   </div>
                 </div>
-              </SheetHeader>
 
-              <div className="flex-1 overflow-y-auto px-5 py-5">
-                <div className="flex gap-2">
-                  <Button
-                    type="button"
-                    variant={language === 'ka' ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setLanguage('ka')}
-                  >
-                    ქართული
-                  </Button>
-                  <Button
-                    type="button"
-                    variant={language === 'en' ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setLanguage('en')}
-                  >
-                    English
-                  </Button>
+                <div className="border-t border-border p-5">
+                  <SheetClose asChild>
+                    <Button
+                      variant="outline"
+                      className="h-12 w-full justify-start gap-2 rounded-xl border-border"
+                      onClick={() => setIsOpen(true)}
+                    >
+                      <ShoppingBag className="size-5" />
+                      {copy.navbar.cart} {totalItems > 0 && `(${totalItems})`}
+                    </Button>
+                  </SheetClose>
                 </div>
-
-                <div className="mt-6 space-y-2">
-                  {navigation.map((item) => (
-                    <SheetClose asChild key={item.name}>
-                      <Link
-                        href={item.href}
-                        className="block rounded-xl border border-border px-4 py-3 text-base font-medium tracking-wide text-foreground uppercase transition-colors hover:bg-muted"
-                      >
-                        {item.name}
-                      </Link>
-                    </SheetClose>
-                  ))}
-                </div>
-              </div>
-
-              <div className="border-t border-border p-5">
-                <SheetClose asChild>
-                  <Button
-                    variant="outline"
-                    className="w-full justify-start gap-2"
-                    onClick={() => setIsOpen(true)}
-                  >
-                    <ShoppingBag className="size-5" />
-                    {copy.navbar.cart} {totalItems > 0 && `(${totalItems})`}
-                  </Button>
-                </SheetClose>
               </div>
             </SheetContent>
           </Sheet>
