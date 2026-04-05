@@ -16,12 +16,14 @@ export function Navbar() {
     language === 'ka'
       ? [
           { name: 'მთავარი', href: '/' },
+          { name: 'ჩვენს შესახებ', href: '/#about' },
           { name: 'ხელნაკეთი დანები', href: '/#knives' },
           { name: 'ტყავის აქსესუარები', href: '/#wallets' },
           { name: 'კონტაქტი', href: '#contact' },
         ]
       : [
           { name: 'Home', href: '/' },
+          { name: 'About Us', href: '/#about' },
           { name: 'Handmade Knives', href: '/#knives' },
           { name: 'Leather Accessories', href: '/#wallets' },
           { name: 'Contact', href: '#contact' },

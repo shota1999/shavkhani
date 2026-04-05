@@ -9,7 +9,7 @@ export function Hero() {
   const { copy } = useLanguage()
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
+    <section id="about" className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
       <Image
         src="/images/hero-forge.png"
         alt="SHAVKHANI"
