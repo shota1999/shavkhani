@@ -41,7 +41,10 @@ export function Navbar() {
               height={48}
               className="size-12"
             />
-            <span className="text-lg font-semibold tracking-[0.2em] text-foreground uppercase">
+            <span
+              className="text-[22px] leading-none tracking-[0.08em] text-foreground uppercase sm:text-2xl"
+              style={{ fontFamily: 'var(--font-rubik-dirt)' }}
+            >
               Shavkhani
             </span>
           </Link>

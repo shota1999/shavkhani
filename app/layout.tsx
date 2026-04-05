@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Cinzel, Geist, Geist_Mono, Rubik_Dirt } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { CartProvider } from '@/lib/cart-context'
 import { LanguageProvider } from '@/lib/language-context'
@@ -10,6 +10,8 @@ import './globals.css'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
+const cinzel = Cinzel({ subsets: ['latin'], weight: ['700'], variable: '--font-cinzel' })
+const rubikDirt = Rubik_Dirt({ subsets: ['latin'], weight: ['400'], variable: '--font-rubik-dirt' })
 
 export const metadata: Metadata = {
   title: 'SHAVKHANI',
@@ -42,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ka">
-      <body className={`${geist.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${geist.variable} ${geistMono.variable} ${cinzel.variable} ${rubikDirt.variable} font-sans antialiased`}>
         <LanguageProvider>
           <CartProvider>
             <Navbar />

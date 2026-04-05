@@ -38,7 +38,10 @@ export function Footer() {
                 height={56}
                 className="size-14"
               />
-              <span className="text-lg font-semibold tracking-[0.2em] text-foreground uppercase">
+              <span
+                className="text-[22px] leading-none tracking-[0.08em] text-foreground uppercase"
+                style={{ fontFamily: 'var(--font-rubik-dirt)' }}
+              >
                 Shavkhani
               </span>
             </Link>
