@@ -25,7 +25,7 @@ export function Hero() {
           alt="SHAVKHANI"
           width={720}
           height={720}
-          className="mx-auto mb-8 size-[576px] sm:size-[672px]"
+          className="mx-auto mb-8 h-auto w-full max-w-[320px] sm:max-w-[520px] lg:max-w-[672px]"
         />
         <h1 className="text-balance text-4xl font-bold tracking-[0.15em] text-foreground sm:text-5xl lg:text-6xl uppercase">
           Shavkhani
