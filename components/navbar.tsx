@@ -42,10 +42,9 @@ export function Navbar() {
               className="size-12"
             />
             <span
-              className="text-[22px] leading-none tracking-[0.08em] text-foreground uppercase sm:text-2xl"
-              style={{ fontFamily: 'var(--font-rubik-dirt)' }}
+              className="text-xl font-semibold leading-none tracking-[0.14em] text-foreground sm:text-2xl"
             >
-              Shavkhani
+              564VKH4N4 W4R
             </span>
           </Link>
         </div>
