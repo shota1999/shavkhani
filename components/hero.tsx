@@ -27,12 +27,6 @@ export function Hero() {
           height={720}
           className="mx-auto mb-8 h-auto w-full max-w-[min(88vw,380px)] sm:max-w-[520px] lg:max-w-[672px]"
         />
-        <h1 className="font-display text-balance text-4xl font-bold tracking-[0.08em] text-foreground drop-shadow-[0_2px_18px_rgba(0,0,0,0.45)] sm:text-5xl lg:text-6xl uppercase">
-          Shavkhani
-        </h1>
-        <p className="mx-auto mt-4 text-lg tracking-[0.25em] text-muted-foreground uppercase">
-          {copy.hero.tagline}
-        </p>
         <p className="mx-auto mt-8 max-w-2xl text-pretty leading-relaxed text-muted-foreground">
           {copy.hero.description}
         </p>
